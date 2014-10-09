@@ -32,6 +32,7 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-align: left;
 }
 
 .reveal article, .reveal aside, .reveal details, .reveal figcaption, .reveal figure,
@@ -258,7 +259,7 @@ body {
 	display: inline-block;
 
 	text-align: left;
-	margin: 0 0 0 1em;
+	margin: 0.75em 0 0 1em;
 }
 
 .reveal ol {
@@ -285,8 +286,12 @@ body {
 	margin-left: 40px;
 }
 
+.reveal li {
+	margin-bottom: 15px;
+}
+
 .reveal p {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	line-height: 1.2em;
 }
 
@@ -319,7 +324,6 @@ body {
 	display: block;
 	position: relative;
 	width: 90%;
-	margin: 15px auto;
 
 	text-align: left;
 	font-size: 0.55em;
@@ -334,10 +338,11 @@ body {
 	font-family: monospace;
 }
 .reveal pre code {
-	padding: 5px;
+	padding: 25px 5px;
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: normal;
+	margin: 25px 0;
 }
 .reveal pre.stretch code {
 	height: 100%;
@@ -532,7 +537,7 @@ body {
 
 	overflow: visible;
 	z-index: 1;
-	text-align: center;
+	/*text-align: center;*/
 
 	-webkit-transition: -webkit-perspective .4s ease;
 	   -moz-transition: -moz-perspective .4s ease;
@@ -553,6 +558,7 @@ body {
 
 .reveal .slides>section {
 	-ms-perspective: 600px;
+	text-align: left;
 }
 
 .reveal .slides>section,
@@ -1219,7 +1225,7 @@ body {
 	top: 0;
 	left: 50%;
 	margin: 0;
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .no-transforms .reveal .controls,

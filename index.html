@@ -4,17 +4,14 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
-
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<title>One Div To Rule Them All!</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
 		<!-- For syntax highlighting -->
@@ -43,54 +40,112 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1 style="margin-bottom: 0;">One Div</h1><h2>To Rule Them All!</h2>
+					<h5 style="margin: 50px 0;">Controlling Drupal div’s and implementing a modular CSS philosophy</h5>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>by Leah Wagner / <a href="http://twitter.com/leahmarsh">@leahmarsh</a> / <a href="http://thejibe.com">The Jibe</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+					<h2>Follow Along</h2>
+					<p>Presentation slides</p>
+					<p><a href="http://bit.ly/###">bit.ly/###</a></p>
 
 					<aside class="notes">
 						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
 					</aside>
 				</section>
 
+				<section>
+					<h2>The Agenda</h2>
+					<ul>
+						<li class="fragment">What is <strong>Modular CSS</strong> and how it can be helpful?</li>
+						<li class="fragment">How you are probably already using this philosophy. <small>(whether you know it or not.)</small></li>
+						<li class="fragment">How the right <strong>file structure and naming conventions</strong> can work with this philosophy.</li>
+						<li class="fragment">How preprocessors like <strong>SASS</strong> and adding on tools like SASS-globbing and Compass can improve your workflow.</li>
+						<li class="fragment">How do we <strong>apply this to Drupal</strong> when so much of our HTML is pre-rendered for us?</li>
+						<li class="fragment">How you can <strong>use template files</strong> to manipulate how Drupal outputs divs.</li>
+						<li class="fragment">What <strong>modules let you manipulate</strong> how Drupal outputs divs.</li>
+						<li class="fragment">What <strong>themes</strong> can get you started.</li>
+					</ul>
+				</section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h1>What is Modular CSS?</h1>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
+						<h2>What is Modular CSS?</h2>
+						<p><strong>This is not something you download.</strong> It's a philiophy that need to integrated into every code decision you make.</p>
+						<p class="fragment">Some terms you may have heard. <small>Get ready for anagram overload!</small></p>
+						<ul class="fragment">
+							<li>Object Oriented CSS (OOCSS) <small><a href="http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/">Read more...</a></small></li>
+							<li>Block, Element, Modifier (BEM)<small><a href="http://bem.info/">Read more...</a></small></li>
+							<li>Don’t Repeat Yourself CSS (DRY CSS)<small><a href="http://vimeo.com/38063798">Read more...</a></small></li>
+							<li>Atomic CSS<small><a href="http://patternlab.io/">Read more...</a></small></li>
+							<li class="fragment"><strong>Scalable and Modular Architecture for CSS (SMACSS)</strong><small><a href="http://smacss.com/">Read more...</a></small></li>
+						</ul>
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
+						<h2>Why (or why not) SMACSS?</h2>
+						<ul class="fragment">
+							<li>Consistency is the most important thing!</li>
+							<li>Drupal 8 has adopted this philosophy for core<small><a href="https://www.drupal.org/taxonomy/term/40340">Read more...</a></small></li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Getting to know</h2><h1>SMACSS</h1>
 					</section>
 					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Categorization</h2>
+						<p>5 different categories of code</p>
+						<ul class="fragment">
+							<li>Base</li>
+							<li>Layout</li>
+							<li>Components <em>(or Modules)</em></li>
+							<li>State</li>
+							<li>Theme</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Base Rules
+
+							The most basic elements that will exist on the page. Usually never overrirden. rests fall into this category.
+
+							```
+								a { color: #666; }
+								a:hover { color: #333; text-decoration: underline; }
+
+								input[type=text], input[type=password] { border: 1px solid #CCC; }
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Layout Rules
+
+							Major layout regions on the page. Think of div #. Layout basic structure of the page. Good place for responsive reflowing of regions.
+
+							```
+								#header, #footer { width: 100%; background: #333; }
+
+								#main { width: 100%; background: #FFF; }
+
+								#content { width: 75%; display: inline; float: left; }
+								#sidebar { width: 25%; display: inline; float: right; }
+
+								.grid-4 li { width: 25%; display: inline; float: left;}
+							```
+
+							More layout rules will be covered along with Components.
+						</script>
 					</section>
 				</section>
 
