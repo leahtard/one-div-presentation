@@ -40,11 +40,20 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 style="margin-bottom: 0;">One Div</h1><h2>To Rule Them All!</h2>
-					<h5 style="margin: 50px 0;">Controlling Drupal div’s and implementing a modular CSS philosophy</h5>
-					<p>
-						<small>by Leah Wagner / <a href="http://twitter.com/leahmarsh">@leahmarsh</a> / <a href="http://thejibe.com">The Jibe</a></small>
-					</p>
+					<section>
+						<h1 style="margin-bottom: 0;">One Div</h1><h2>To Rule Them All!</h2>
+						<h5 style="margin: 50px 0;">Controlling Drupal div’s and implementing a modular CSS philosophy</h5>
+						<p>
+							<small>by Leah Wagner / <a href="http://twitter.com/leahmarsh">@leahmarsh</a> / <a href="http://thejibe.com">The Jibe</a></small>
+						</p>
+					</section>
+					<section data-background="lib/images/lotr.gif">
+						<h1 style="margin-bottom: 0;">One Div</h1><h2>To Rule Them All!</h2>
+						<h5 style="margin: 50px 0;">Controlling Drupal div’s and implementing a modular CSS philosophy</h5>
+						<p>
+							<small>by Leah Wagner / <a href="http://twitter.com/leahmarsh">@leahmarsh</a> / <a href="http://thejibe.com">The Jibe</a></small>
+						</p>
+					</section>
 				</section>
 
 				<section>
@@ -75,6 +84,31 @@
 				<section>
 					<section>
 						<h1>What is Modular CSS?</h1>
+						<h3 class="fragment">Trust me, you have seen this before...</h3>
+						<aside class="notes">
+							This is an introductory example we see in Drupal everyday.
+							This is not an ideal example. We will come back to this example and make it a stronger implimentation of Modular CSS after our introduction to the subject.
+						</aside>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## What is Modular CSS?
+
+							To get us started, an example we see everyday in Drupal.
+
+							```
+								.views-row      { border-bottom: 1px solid #CCC; padding: 20px 0; }
+
+								.views-row-last { border-bottom: none; }
+
+								<div id="block-view-1" class="view">
+									<div class="views-row views-row-first"></div>
+									<div class="views-row"></div>
+									<div class="views-row views-row-last"></div>
+								</div>
+							```
+
+						</script>
 					</section>
 					<section>
 						<h2>What is Modular CSS?</h2>
@@ -91,8 +125,14 @@
 					<section>
 						<h2>Why (or why not) SMACSS?</h2>
 						<ul class="fragment">
-							<li>Consistency is the most important thing!</li>
-							<li>Drupal 8 has adopted this philosophy for core<small><a href="https://www.drupal.org/taxonomy/term/40340">Read more...</a></small></li>
+							<li>This is the wrong question</li>
+							<li>However, Drupal 8 has adopted this philosophy for core dev<small><a href="https://www.drupal.org/taxonomy/term/40340">Read more...</a></small></li>
+						</ul>
+						<h2 class="fragment">Why use a modular CSS Philosophy?</h2>
+						<ul class="fragment">
+							<li>Your CSS with have a high level of specificity while remaining highly reusable.</li>
+							<li>You <em>(should)</em> never have to rewrite code. Potentially, share code across different projects.</li>
+							<li>You will avoid CSS conflicts and changes breaking other areas of your site.</li>
 						</ul>
 					</section>
 				</section>
@@ -145,6 +185,43 @@
 							```
 
 							More layout rules will be covered along with Components.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							The majority of your code...
+
+							```
+								#header
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## State Rules
+
+							The majority of your code...
+
+							```
+								#header
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Theme Rules
+
+							The majority of your code...
+
+							```
+								#header
+							```
+							Note:
+							- Theme is not how the element looks (as I initally thought).
+							- Theme is used when a single code base needs different styles. ie: A light and dark layout.
+							- This is the extend to which I will review this section but get the SMACSS eBook to learn more.
 						</script>
 					</section>
 				</section>
