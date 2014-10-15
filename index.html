@@ -171,7 +171,7 @@
 						<script type="text/template">
 							## Layout Rules
 
-							Major layout regions on the page. Think of div #. Layout basic structure of the page. Good place for responsive reflowing of regions.
+							There are layout rules for major page regions and smaller components on the page.
 
 							```
 								#header, #footer { width: 100%; background: #333; }
@@ -181,42 +181,255 @@
 								#content { width: 75%; display: inline; float: left; }
 								#sidebar { width: 25%; display: inline; float: right; }
 
-								.grid-4 li { width: 25%; display: inline; float: left;}
+								.l-grid-4 li { width: 25%; display: inline; float: left;}
+								.l-inline { display: inline; }
 							```
-
-							More layout rules will be covered along with Components.
+							Note:
+							- There are two components to layout styles. The first being how we layout the major regions on the page (#header, #main, #footer)
+							- The second is how we layout object within these major regions. An example it the last item here that will layout a ul list into a grid of 4 inline blocks.
+							- Many people alreay use a grid system for these type of layouts. Another way you are already using this approach.
+							- Another example would an inline class. 
+							- While using the SMACSS philiosophy, we add "l-" to the beginning of our classes so we know this style is modify an existing component.
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 							## Component Rules (or Modules)
 
-							The majority of your code...
+							How many times to we style something like this?
 
 							```
-								#header
+								<div id="block-view-1" class="view">
+								    <h1>My views listing title</h1>
+								    <ul>
+								        <li>
+								            <h3><a href="/node/1">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+				  				        </li>
+								        <li>
+								            <h3><a href="/node/2">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								        <li>
+								            <h3><a href="/node/3">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								    </ul>
+								</div>
 							```
+							Note:
+							- The meat and potatoes of the concept
+							- Mostly with the help of views, how many times do we style something like this? Here we have used views to assemble an unordered list.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							And we might start styling with something like this:
+
+							```
+								#block-view-1 li    { border-bottom: 1px solid #CCC; padding: 20px 0; }
+
+								#block-view-1 h3 a  { color: #333; }
+
+								#block-view-1 p     { font-style: italic; }
+
+							```
+							To reuse this code, we do something like this:
+
+							```
+								#block-view-1 li,
+								#block-view-2 li    { border-bottom: 1px solid #CCC; padding: 20px 0; }
+
+								#block-view-1 h3 a,
+								#block-view-2 h3 a  { color: #333; }
+
+								#block-view-1 p,
+								#block-view-2 p     { font-style: italic; }
+
+							```
+							Note:
+							- We style our first block with a border bottom
+							- When we create another view that needs the same style, we might do something like this. And this is a fairly good example. Possibly we make a sass mixin. A worse case senerio is a different themer comes in a puts the #block-view-2 code in a completely different area.
+							- So how can we improve this?
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							Instead we difine a reuable class:
+
+							```
+								<div id="block-view-1" class="list-title-body">
+								    <h1>My views listing title</h1>
+								    <ul>
+								        <li>
+								            <h3><a href="/node/1">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+				  				        </li>
+								        <li>
+								            <h3><a href="/node/2">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								        <li>
+								            <h3><a href="/node/3">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								    </ul>
+								</div>
+							```
+							Note:
+							- We need to create a reusable class. See list-title-body. Your class should describe he content being displayed clearly and specifically.
+							- view-list is not specific enough becasue different content can exist in a list.
+							- list-blog is too specific because a title/body list could be used on other content types.
+							- To add this cutom class to a view, open the advanced tab and you will see CSS where you can add classes.
+							- So with this class, we can apply our styles to #block-view-1 and #block-view-2 with a single reusable class.
+							- We need a another display. So we are going to create #block-view-3. We do not need to touch css becasue we can simply apply our class to the new view.
+							- So, does anyone live in this utopia where all is consistent? Now a client change has come in. #block-view-2 needs to have a light grey bg on all even elements.
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							This is what we have in place:
+
+							```
+								.list-title-body li    { border-bottom: 1px solid #CCC; padding: 20px 0; }
+								.list-title-body h3 a  { color: #333; }
+								.list-title-body p     { font-style: italic; }
+
+							```
+							We are NOT going to do this:
+
+							```
+								#block-view-2 li  { border-bottom: 1px solid #CCC; padding: 20px 0; }
+
+							```
+
+							We going to define a subcomponent with the overrides:
+
+							...
+
+								.list-title-body-striped li:nth-child(2n)  { background: #DDD; }
+
+							```
+
+							Note:
+							- First block show the CSS we already have
+							- We are not going to apply our overides by calling #block-view-2 block. This would be implimenting what we worked so hard to overcome on the first step. I think this is where we most often go wrong!
+							- We are going to create a subcomponent (or submodule)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							Then we add our subcomponent class:
+
+							```
+								<div id="block-view-2" class="list-title-body list-title-body-striped">
+								    <h1>My views listing title</h1>
+								    <ul>
+								        <li>
+								            <h3><a href="/node/1">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+				  				        </li>
+								        <li>
+								            <h3><a href="/node/2">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								        <li>
+								            <h3><a href="/node/3">Lorem Ipsum Dolor</a></h3>
+								            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+								        </li>
+								    </ul>
+								</div>
+							```
+							Note:
+							- We then add our additional class that contains our subcomponent styles
+							- Now this kind of looks like the view-row example we started off with. We have already imroved upon this with a better, reusable nameing convention, but we can still do better.
+							- On a more complicated site, this philosophy could see us adding even more classes to this block. Something those of us obsessed with clean markup try to avoid. I wanted to introduce as much as I could on this topic without talking about preprocessors like SASS and LESS.
+							- But if you stop here, you are still ahead of the game. Few performance implications. 
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Component Rules (or Modules)
+
+							With a preprocessor, we can extend our class:
+
+							```
+								<div id="block-view-2" class="list-title-body-striped">
+								    <h1>My views listing title</h1>
+								    <ul>
+								        <li>...</li>
+								    </ul>
+								</div>
+							```
+							We only need one class becasue our SASS looks like this:
+
+							```
+								.list-title-body
+									li
+										border-bottom: 1px solid #CCC
+										padding: 20px 0
+
+								.list-title-body-striped
+									@extend .list-title-body
+									li:nth-child(2n)
+										background: #DDD
+
+							```
+							Note:
+							- Use extend functionality
+							- We only need the one class becasue @extend pulls in all the styles from .list-title-body
+							- Now we are ready to move on to State
+
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 							## State Rules
 
-							The majority of your code...
+							State rules are used for styles that have a JS dependancy and this is indicated with the 'is-' prefix.
 
 							```
-								#header
+								<header id="header">
+									<nav class="is-collapsed">
+										<ul><li><a href="/home">Home</a></li><li><a href="/about">About</a></li></ul>
+									</nav>
+								</header>
 							```
+							Our classes might look like this:
+
+							...
+
+								nav               { height: auto; }
+								nav.is-collapsed  { height: 0px; }
+							...
+
+							Note:
+							- One thing I learnind from the SMACSS book is that puedo states, like :hover, should not be used on elements that are not an a href. In the cases where you need this functionality, it is encouraged to apply a class with JS and manipulate it with a state rule
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
 							## Theme Rules
 
-							The majority of your code...
+							Style your components for different themes or colour pallets
 
 							```
-								#header
+								// As deined by the component
+								.button { background: #CCC; border: #000; border-radius: 5px; }
+
+								// As defined in red.css
+								.button { background: #FF0000; }
 							```
 							Note:
 							- Theme is not how the element looks (as I initally thought).
@@ -261,12 +474,12 @@
 				</section>
 
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<h2>Ties in with other development bet practices</h2>
+					<ul>
+						<li>Reinforces clean markup</li>
+						<li>While you are thinking about classes, you think about using the correct HTML5 markup</li>
+						<li>This concept lends itself to online style tiles or style guides. One component equals one style.</li>
+					</ul>
 				</section>
 
 				<section data-markdown>
