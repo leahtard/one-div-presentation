@@ -67,17 +67,46 @@
 				</section>
 
 				<section>
-					<h2>The Agenda</h2>
-					<ul>
-						<li class="fragment">What is <strong>Modular CSS</strong> and how it can be helpful?</li>
-						<li class="fragment">How you are probably already using this philosophy. <small>(whether you know it or not.)</small></li>
-						<li class="fragment">How the right <strong>file structure and naming conventions</strong> can work with this philosophy.</li>
-						<li class="fragment">How preprocessors like <strong>SASS</strong> and adding on tools like SASS-globbing and Compass can improve your workflow.</li>
-						<li class="fragment">How do we <strong>apply this to Drupal</strong> when so much of our HTML is pre-rendered for us?</li>
-						<li class="fragment">How you can <strong>use template files</strong> to manipulate how Drupal outputs divs.</li>
-						<li class="fragment">What <strong>modules let you manipulate</strong> how Drupal outputs divs.</li>
-						<li class="fragment">What <strong>themes</strong> can get you started.</li>
-					</ul>
+					<section>
+						<h1>The Agenda</h1>
+						<p>What is <strong>Modular CSS</strong> and how it can be helpful?</p>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+					<section>
+						<h1>The Agenda</h1>
+						<p>How you are probably already using this philosophy. <small>(whether you know it or not.)</small></p>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+					<section>
+						<h1>The Agenda</h1>
+						<p>How a set <strong>file structure and naming conventions</strong> makes this philosophy work best.</p>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+					<section>
+						<h1>The Agenda</h1>
+						<p>How preprocessors like <strong>SASS</strong> and adding on tools like SASS-globbing and Compass can improve your workflow.</p>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+					<section>
+						<h1>The Agenda</h1>
+						<p>How do we <strong>apply this to Drupal</strong> when so much of our HTML is pre-rendered for us?</p>
+						<ul>
+							<li>Using theme tpl files</li>
+							<li>Using contributed modules</li>
+							<li>Using contributed themes</li>
+						</ul>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -87,7 +116,7 @@
 						<h3 class="fragment">Trust me, you have seen this before...</h3>
 						<aside class="notes">
 							This is an introductory example we see in Drupal everyday.
-							This is not an ideal example. We will come back to this example and make it a stronger implimentation of Modular CSS after our introduction to the subject.
+							This is not an ideal example. We will come back to this example and make it a stronger implementation of Modular CSS after our introduction to the subject.
 						</aside>
 					</section>
 					<section data-markdown>
@@ -112,7 +141,7 @@
 					</section>
 					<section>
 						<h2>What is Modular CSS?</h2>
-						<p><strong>This is not something you download.</strong> It's a philiophy that need to integrated into every code decision you make.</p>
+						<p><strong>This is not something you download.</strong> It's a philosophy that need to integrated into every code decision you make.</p>
 						<p class="fragment">Some terms you may have heard. <small>Get ready for anagram overload!</small></p>
 						<ul class="fragment">
 							<li>Object Oriented CSS (OOCSS) <small><a href="http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/">Read more...</a></small></li>
@@ -157,7 +186,7 @@
 						<script type="text/template">
 							## Base Rules
 
-							The most basic elements that will exist on the page. Usually never overrirden. rests fall into this category.
+							The most basic elements that will exist on the page. Usually never overridden. rests fall into this category.
 
 							```
 								a { color: #666; }
@@ -187,9 +216,9 @@
 							Note:
 							- There are two components to layout styles. The first being how we layout the major regions on the page (#header, #main, #footer)
 							- The second is how we layout object within these major regions. An example it the last item here that will layout a ul list into a grid of 4 inline blocks.
-							- Many people alreay use a grid system for these type of layouts. Another way you are already using this approach.
+							- Many people already use a grid system for these type of layouts. Another way you are already using this approach.
 							- Another example would an inline class. 
-							- While using the SMACSS philiosophy, we add "l-" to the beginning of our classes so we know this style is modify an existing component.
+							- While using the SMACSS philosophy, we add "l-" to the beginning of our classes so we know this style is modify an existing component.
 						</script>
 					</section>
 					<section data-markdown>
@@ -251,7 +280,7 @@
 							```
 							Note:
 							- We style our first block with a border bottom
-							- When we create another view that needs the same style, we might do something like this. And this is a fairly good example. Possibly we make a sass mixin. A worse case senerio is a different themer comes in a puts the #block-view-2 code in a completely different area.
+							- When we create another view that needs the same style, we might do something like this. And this is a fairly good example. Possibly we make a sass mixin. A worse case scenerio is a different themer comes in a puts the #block-view-2 code in a completely different area.
 							- So how can we improve this?
 						</script>
 					</section>
@@ -259,7 +288,7 @@
 						<script type="text/template">
 							## Component Rules (or Modules)
 
-							Instead we difine a reuable class:
+							Instead we define a reusable class:
 
 							```
 								<div id="block-view-1" class="list-title-body">
@@ -281,12 +310,12 @@
 								</div>
 							```
 							Note:
-							- We need to create a reusable class. See list-title-body. Your class should describe he content being displayed clearly and specifically.
-							- view-list is not specific enough becasue different content can exist in a list.
+							- We need to create a reusable class. See list-title-body. Your class should describe the content being displayed clearly and specifically.
+							- view-list is not specific enough because different content can exist in a list.
 							- list-blog is too specific because a title/body list could be used on other content types.
-							- To add this cutom class to a view, open the advanced tab and you will see CSS where you can add classes.
+							- To add this custom class to a view, open the advanced tab and you will see CSS where you can add classes.
 							- So with this class, we can apply our styles to #block-view-1 and #block-view-2 with a single reusable class.
-							- We need a another display. So we are going to create #block-view-3. We do not need to touch css becasue we can simply apply our class to the new view.
+							- We need a another display. So we are going to create #block-view-3. We do not need to touch css because we can simply apply our class to the new view.
 							- So, does anyone live in this utopia where all is consistent? Now a client change has come in. #block-view-2 needs to have a light grey bg on all even elements.
 
 						</script>
@@ -320,7 +349,7 @@
 
 							Note:
 							- First block show the CSS we already have
-							- We are not going to apply our overides by calling #block-view-2 block. This would be implimenting what we worked so hard to overcome on the first step. I think this is where we most often go wrong!
+							- We are not going to apply our overrides by calling #block-view-2 block. This would be implementing what we worked so hard to overcome on the first step. I think this is where we most often go wrong!
 							- We are going to create a subcomponent (or submodule)
 
 						</script>
@@ -352,7 +381,7 @@
 							```
 							Note:
 							- We then add our additional class that contains our subcomponent styles
-							- Now this kind of looks like the view-row example we started off with. We have already imroved upon this with a better, reusable nameing convention, but we can still do better.
+							- Now this kind of looks like the view-row example we started off with. We have already improved upon this with a better, reusable naming convention, but we can still do better.
 							- On a more complicated site, this philosophy could see us adding even more classes to this block. Something those of us obsessed with clean markup try to avoid. I wanted to introduce as much as I could on this topic without talking about preprocessors like SASS and LESS.
 							- But if you stop here, you are still ahead of the game. Few performance implications. 
 
@@ -372,7 +401,7 @@
 								    </ul>
 								</div>
 							```
-							We only need one class becasue our SASS looks like this:
+							We only need one class because our SASS looks like this:
 
 							```
 								.list-title-body
@@ -388,7 +417,7 @@
 							```
 							Note:
 							- Use extend functionality
-							- We only need the one class becasue @extend pulls in all the styles from .list-title-body
+							- We only need the one class because @extend pulls in all the styles from .list-title-body
 							- Now we are ready to move on to State
 
 						</script>
@@ -397,7 +426,7 @@
 						<script type="text/template">
 							## State Rules
 
-							State rules are used for styles that have a JS dependancy and this is indicated with the 'is-' prefix.
+							State rules are used for styles that have a JS dependency and this is indicated with the 'is-' prefix.
 
 							```
 								<header id="header">
@@ -415,7 +444,7 @@
 							...
 
 							Note:
-							- One thing I learnind from the SMACSS book is that puedo states, like :hover, should not be used on elements that are not an a href. In the cases where you need this functionality, it is encouraged to apply a class with JS and manipulate it with a state rule
+							- One thing I learned from the SMACSS book is that puedo states, like :hover, should not be used on elements that are not an a href. In the cases where you need this functionality, it is encouraged to apply a class with JS and manipulate it with a state rule
 						</script>
 					</section>
 					<section data-markdown>
@@ -425,16 +454,16 @@
 							Style your components for different themes or colour pallets
 
 							```
-								// As deined by the component
+								// As defined by the component
 								.button { background: #CCC; border: #000; border-radius: 5px; }
 
 								// As defined in red.css
 								.button { background: #FF0000; }
 							```
 							Note:
-							- Theme is not how the element looks (as I initally thought).
+							- Theme is not how the element looks (as I initially thought).
 							- Theme is used when a single code base needs different styles. ie: A light and dark layout.
-							- This is the extend to which I will review this section but get the SMACSS eBook to learn more.
+							- This is the extent to which I will review this section but get the SMACSS eBook to learn more.
 						</script>
 					</section>
 				</section>
@@ -474,7 +503,7 @@
 				</section>
 
 				<section>
-					<h2>Ties in with other development bet practices</h2>
+					<h2>Ties in with other development best practices</h2>
 					<ul>
 						<li>Reinforces clean markup</li>
 						<li>While you are thinking about classes, you think about using the correct HTML5 markup</li>
