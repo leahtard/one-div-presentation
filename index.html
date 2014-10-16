@@ -332,24 +332,27 @@
 								.list-title-body p     { font-style: italic; }
 
 							```
-							We are NOT going to do this:
+							We are NOT going to:
 
 							```
-								#block-view-2 li:nth-child(2n)  { background: #DDD; }
+								#block-view-2 li:nth-child(2n)                { background: #DDD; }
+								ul.striped li:nth-child(2n)                   { background: #DDD; }
+								.list-title-body ul.striped li:nth-child(2n)  { background: #DDD; }
 
 							```
 
 							We going to define a subcomponent with the overrides:
-
-							...
-
-								.list-title-body-striped li:nth-child(2n)  { background: #DDD; }
+							```
+								.list-title-body--striped li:nth-child(2n)  { background: #DDD; }
 
 							```
 
+
 							Note:
 							- First block show the CSS we already have
-							- We are not going to apply our overrides by calling #block-view-2 block. This would be implementing what we worked so hard to overcome on the first step. I think this is where we most often go wrong!
+							- We are not going to apply our overrides by calling #block-view-2 block. This would be implementing what we worked so hard to overcome on the first step.
+							- A striped list could be its own reusable component. Yes, but trend lightly. Will every single striped list have the same background color? If yes, this should be moved to your base styles. It does not belong with your component code.
+							- We are not going to add another level of classes. These are the three main areas where we most often go wrong!
 							- We are going to create a subcomponent (or submodule)
 
 						</script>
@@ -361,7 +364,7 @@
 							Then we add our subcomponent class:
 
 							```
-								<div id="block-view-2" class="list-title-body list-title-body-striped">
+								<div id="block-view-2" class="list-title-body list-title-body--striped">
 								    <h1>My views listing title</h1>
 								    <ul>
 								        <li>
@@ -394,7 +397,7 @@
 							With a preprocessor, we can extend our class:
 
 							```
-								<div id="block-view-2" class="list-title-body-striped">
+								<div id="block-view-2" class="list-title-body--striped">
 								    <h1>My views listing title</h1>
 								    <ul>
 								        <li>...</li>
@@ -409,7 +412,7 @@
 										border-bottom: 1px solid #CCC
 										padding: 20px 0
 
-								.list-title-body-striped
+								.list-title-body--striped
 									@extend .list-title-body
 									li:nth-child(2n)
 										background: #DDD
@@ -431,20 +434,22 @@
 							```
 								<header id="header">
 									<nav class="is-collapsed">
-										<ul><li><a href="/home">Home</a></li><li><a href="/about">About</a></li></ul>
+										<ul>
+											<li><a href="/home">Home</a></li>
+											<li><a href="/about">About</a></li>
+										</ul>
 									</nav>
 								</header>
 							```
-							Our classes might look like this:
-
-							...
-
+							Our classes might look like:
+							```
 								nav               { height: auto; }
 								nav.is-collapsed  { height: 0px; }
-							...
+							```
 
 							Note:
 							- One thing I learned from the SMACSS book is that puedo states, like :hover, should not be used on elements that are not an a href. In the cases where you need this functionality, it is encouraged to apply a class with JS and manipulate it with a state rule
+							- The is- prefix is a really nice indicator that there is JS manipulating this class.
 						</script>
 					</section>
 					<section data-markdown>
@@ -469,153 +474,46 @@
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
+					<section>
+						<h1>Organization</h1>
+						<p>File structure and naming conventions</p>
+					</section>
+					<section>
+						<h1>Organization</h1>
+						<ul>
+							<li>Folder sructure</li>
+							<li>l- for layout styles, and is- for state styles, subcomponent should start with their components naming convention with a --</li>
+							<li>One style file per component</li>
+							<li>SASS Globing ot Compass to complie</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<section>
+						<h1>Controlling Drupal Markup</h1>
+						<p>Bringing us back to One Div To Rule Them All!</p>
+					</section>
+					<section>
+						<h1>Controlling Drupal Markup</h1>
+						<ul>
+							<li>tpl files. Simple example for a read more links.</li>
+							<li>Modules: Fences - Globally set an HTML5 elements and concise class for a field. This style is then used whether you use DS, Views or native Drupal. Show how to configure.</li>
+							<li>Module: DS feild templates - Lot of flexibility but a lot of manual configuration. Show how to configure.</li>
+							<li>Module: Views - Ways to manuipulate views output (since it generates so much of our code)</li>
+							<li>Themes: We are currently workig on some updates for Basic</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Ties in with other development best practices</h2>
-					<ul>
+					<h1>Working with Best Practices</h1>
+					<p></p>
+					<ul class="fragment">
 						<li>Reinforces clean markup</li>
 						<li>While you are thinking about classes, you think about using the correct HTML5 markup</li>
-						<li>This concept lends itself to online style tiles or style guides. One component equals one style.</li>
+						<li>This concept lends itself to online style tiles or style guides. Use each component to style some basic HTML on styles page. Gives other devs a point of reference.</li>
 					</ul>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
 				</section>
 
 				<section>
