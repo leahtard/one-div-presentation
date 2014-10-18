@@ -51,7 +51,7 @@
 						<h1 style="margin-bottom: 0;">One Div</h1><h2>To Rule Them All!</h2>
 						<h5 style="margin: 50px 0;">Controlling Drupal div’s and implementing a modular CSS philosophy</h5>
 						<p>
-							<small>by Leah Wagner / <a href="http://twitter.com/leahmarsh">@leahmarsh</a> / <a href="http://thejibe.com">The Jibe</a></small>
+							<small>by Leah Wagner&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://twitter.com/leahmarsh">@leahmarsh</a> <br> from The Jibe&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://twitter.com/thejibe">@thejibe</a></small>
 						</p>
 					</section>
 				</section>
@@ -546,15 +546,64 @@
 							We are going to do this with TPL files, Module and Themes... oh my!
 						</aside>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Controlling Drupal Markup
+
+							<strong>TPL Files</strong>
+
+							```
+								// field.tpl.php
+
+								<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
+								  <?php if (!$label_hidden): ?>
+								    <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+								  <?php endif; ?>
+								  <div class="field-items"<?php print $content_attributes; ?>>
+								    <?php foreach ($items as $delta => $item): ?>
+								      <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
+								    <?php endforeach; ?>
+								  </div>
+								</div>
+
+							```
+							Note:
+							- Here I am going to show a way we can resolve the inconsistency of read more links. We see this code rendered differently based on whether it was output but Views, Display Suite or Drupal core, when typically, we want all of these buttons to look the same.
+							- Here I am showing the code that is being used to render all fields. There are a lot of possibilities here.
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Controlling Drupal Markup
+
+							<strong>TPL Files</strong>
+
+							```
+							  // field--field-node-link.tpl.php
+
+							  <button class="btn-read-more">
+							    <?php print render($item); ?>
+							  </button>
+
+							```
+							Note:
+							- For a simple field like a read more link, first, we can remove a lot of the excess markup, and then apply the correct class you wish to use.
+
+						</script>
+					</section>
 					<section>
-						<h1>Controlling Drupal Markup</h1>
-						<ul>
-							<li>tpl files. Simple example for a read more links.</li>
-							<li>Modules: Fences - Globally set an HTML5 elements and concise class for a field. This style is then used whether you use DS, Views or native Drupal. Show how to configure.</li>
-							<li>Module: DS feild templates - Lot of flexibility but a lot of manual configuration. Show how to configure.</li>
-							<li>Module: Views - Ways to manuipulate views output (since it generates so much of our code)</li>
-							<li>Themes: We are currently workig on some updates for Basic</li>
-						</ul>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Fences</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Enable class overrrides</small></p>
+						<img src="lib/images/fences-2.png"/>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Select HTML5 element on a per field basis</small></p>
+						<img src="lib/images/fences-1.png"/>
+						<aside class="notes">
+							- You can configure fences to use one class on a per field basis. Keeps you field name consistent whether it is rendered by DS, Views field or Drupal core.
+							- On a per field basis, you will also be able to define with HTML5 element you would liek to use.
+							- I always prefer building my displays with DS becasue it is reusable. But sometime find myself needed views funtionality that only works with field displays. This will keep those two views consistent.
+						</aside>
 					</section>
 				</section>
 
