@@ -60,30 +60,18 @@
 					<section>
 						<h1>The Agenda</h1>
 						<p>What is <strong>Modular CSS</strong> and how it can be helpful?</p>
-						<aside class="notes">
-							...
-						</aside>
 					</section>
 					<section>
 						<h1>The Agenda</h1>
 						<p>How you are probably already using this philosophy. <small>(whether you know it or not.)</small></p>
-						<aside class="notes">
-							...
-						</aside>
 					</section>
 					<section>
 						<h1>The Agenda</h1>
 						<p>How a set <strong>file structure and naming conventions</strong> makes this philosophy work best.</p>
-						<aside class="notes">
-							...
-						</aside>
 					</section>
 					<section>
 						<h1>The Agenda</h1>
 						<p>How preprocessors like <strong>SASS</strong> and adding on tools like SASS-globbing and Compass can improve your workflow.</p>
-						<aside class="notes">
-							...
-						</aside>
 					</section>
 					<section>
 						<h1>The Agenda</h1>
@@ -93,9 +81,6 @@
 							<li>Using contributed modules</li>
 							<li>Using contributed themes</li>
 						</ul>
-						<aside class="notes">
-							...
-						</aside>
 					</section>
 				</section>
 
@@ -131,21 +116,23 @@
 					</section>
 					<section>
 						<h2>What is Modular CSS?</h2>
-						<p><strong>This is not something you download.</strong> It's a philosophy that need to integrated into every code decision you make.</p>
-						<p class="fragment">Some terms you may have heard. <small>Get ready for anagram overload!</small></p>
+						<p>This is not something you download, but a philosophy you use when you style your project</p>
 						<ul class="fragment">
-							<li>Object Oriented CSS (OOCSS) <small><a href="http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/">Read more...</a></small></li>
-							<li>Block, Element, Modifier (BEM)<small><a href="http://bem.info/">Read more...</a></small></li>
-							<li>Don’t Repeat Yourself CSS (DRY CSS)<small><a href="http://vimeo.com/38063798">Read more...</a></small></li>
-							<li>Atomic CSS<small><a href="http://patternlab.io/">Read more...</a></small></li>
-							<li class="fragment"><strong>Scalable and Modular Architecture for CSS (SMACSS)</strong><small><a href="http://smacss.com/">Read more...</a></small></li>
+							<li>Object Oriented CSS (OOCSS) <small style="vertical-align: baseline;"><a href="http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/">Read more...</a></small></li>
+							<li>Block, Element, Modifier (BEM) <small style="vertical-align: baseline;"><a href="http://bem.info/">Read more...</a></small></li>
+							<li>Don’t Repeat Yourself CSS (DRY CSS) <small style="vertical-align: baseline;"><a href="http://vimeo.com/38063798">Read more...</a></small></li>
+							<li>Atomic CSS <small style="vertical-align: baseline;"><a href="http://patternlab.io/">Read more...</a></small></li>
+							<li class="fragment"><strong>Scalable and Modular Architecture for CSS (SMACSS) </strong><small style="vertical-align: baseline;"><a href="http://smacss.com/">Read more...</a></small></li>
 						</ul>
+						<aside class="notes">
+							- Some terms you may have heard. Get ready for anagram overload!
+						</aside>
 					</section>
 					<section>
 						<h2>Why (or why not) SMACSS?</h2>
 						<ul class="fragment">
 							<li>This is the wrong question</li>
-							<li>However, Drupal 8 has adopted this philosophy for core dev<small><a href="https://www.drupal.org/taxonomy/term/40340">Read more...</a></small></li>
+							<li>Drupal 8 has adopted this philosophy for core dev<br><small><a href="https://www.drupal.org/taxonomy/term/40340">Read more...</a></small></li>
 						</ul>
 						<h2 class="fragment">Why use a modular CSS Philosophy?</h2>
 						<ul class="fragment">
@@ -207,7 +194,7 @@
 							- There are two components to layout styles. The first being how we layout the major regions on the page (#header, #main, #footer)
 							- The second is how we layout object within these major regions. An example it the last item here that will layout a ul list into a grid of 4 inline blocks.
 							- Many people already use a grid system for these type of layouts. Another way you are already using this approach.
-							- Another example would an inline class. 
+							- Another example would an inline class.
 							- While using the SMACSS philosophy, we add "l-" to the beginning of our classes so we know this style is modify an existing component.
 						</script>
 					</section>
@@ -336,12 +323,10 @@
 								.list-title-body--striped li:nth-child(2n)  { background: #DDD; }
 
 							```
-
-
 							Note:
 							- First block show the CSS we already have
 							- We are not going to apply our overrides by calling #block-view-2 block. This would be implementing what we worked so hard to overcome on the first step.
-							- A striped list could be its own reusable component. Yes, but trend lightly. Will every single striped list have the same background color? If yes, this should be moved to your base styles. It does not belong with your component code.
+							- A striped list could be its own reusable component. Yes, but tread lightly. Will every single striped list have the same background color? If yes, this should be moved to your base styles. It does not belong with your component code.
 							- We are not going to add another level of classes. These are the three main areas where we most often go wrong!
 							- We are going to create a subcomponent (or submodule)
 
@@ -389,9 +374,7 @@
 							```
 								<div id="block-view-2" class="list-title-body--striped">
 								    <h1>My views listing title</h1>
-								    <ul>
-								        <li>...</li>
-								    </ul>
+								    <ul><li>...</li></ul>
 								</div>
 							```
 							We only need one class because our SASS looks like this:
@@ -495,8 +478,8 @@
 
 							```
 							Note:
-							- Base would inculde and reset or normalize code
-							- Components are where the majority of your code will go. We like using the burbon library so I have added that folder there as an example. Then you will see an individual file for each major component. The a generic one.
+							- Base would include and reset or normalize code
+							- Components are where the majority of your code will go. We like using the Bourbon library so I have added that folder there as an example. Then you will see an individual file for each major component. The a generic one.
 							- Layout, I have included the neat grid system and then my layout sass file
 							- States, you will probably only ever have one
 							- Themes, if your design requires it.
@@ -589,32 +572,123 @@
 							```
 							Note:
 							- For a simple field like a read more link, first, we can remove a lot of the excess markup, and then apply the correct class you wish to use.
+							- I understand working with these files is not ideal for everyone. Lets cover some Modules that give you a UI to achieve the same thing.
 
 						</script>
 					</section>
 					<section>
 						<h2>Controlling Drupal Markup</h2>
 						<p><strong>Module: Fences</strong></p>
-						<p style="line-height: 1em; margin-bottom: 0;"><small>Enable class overrrides</small></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Enable class overrides</small></p>
 						<img src="lib/images/fences-2.png"/>
 						<p style="line-height: 1em; margin-bottom: 0;"><small>Select HTML5 element on a per field basis</small></p>
 						<img src="lib/images/fences-1.png"/>
 						<aside class="notes">
 							- You can configure fences to use one class on a per field basis. Keeps you field name consistent whether it is rendered by DS, Views field or Drupal core.
-							- On a per field basis, you will also be able to define with HTML5 element you would liek to use.
-							- I always prefer building my displays with DS becasue it is reusable. But sometime find myself needed views funtionality that only works with field displays. This will keep those two views consistent.
+							- On a per field basis, you will also be able to define with HTML5 element you would like to use.
+							- I always prefer building my displays with DS because it is reusable. But sometime find myself needed views functionality that only works with field displays. This will keep those two views consistent.
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Display Suite Extras</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Enable Display Suite Extras and activate field</small></p>
+						<img src="lib/images/ds-1.png"/>
+						<aside class="notes">
+							-
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Display Suite Extras</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Select HTML5 element on a per field basis</small></p>
+						<img src="lib/images/ds-2.jpg"/>
+						<aside class="notes">
+							-
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Views</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Create a custom class</small></p>
+						<img src="lib/images/views-1.jpg"/>
+						<aside class="notes">
+							- Well, everyone knows about this one. But here are some of the tricks I use when implementing a modular CSS philosophy. Everyone knocks views for its output, but you have options!
+							- Under the Advance tab, you can add a custom class to your view to the highest div wrapper.
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Views</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Cleanup your row markup</small></p>
+						<img src="lib/images/views-2.jpg"/>
+						<aside class="notes">
+							- While you are here, I encourage everyone to cleanup their row markup as well.
+							- Lately, I have been leaning towards using unordered lists, instead of the default uunformatted view. I then usually completely remove all row formatting. If I do use an unformated view I usually remove all the classes and add views-row as my custom row (on sites that already have default row stils in place).
+							- With CSS selectors, I do not believe we need these extra classes.
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Views</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Customize your field markup</small></p>
+						<img src="lib/images/views-3.jpg"/>
+						<aside class="notes">
+							- If you don't have fences in place, you can still customize your field markup with these settings. But you should use Fences. It sets this as your default settings. If you need customization, you can edit it, instead of manually doing this on every field.
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Clean Markup</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Create a custom block class</small></p>
+						<img src="lib/images/clean-1.jpg"/>
+						<aside class="notes">
+							- I have just added in this slide today.
+							- What fences does for fields, Clean markup does for blocks and Panels
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Module: Clean Markup</strong></p>
+						<p style="line-height: 1em; margin-bottom: 0;"><small>Create a custom panel pane or panel region class</small></p>
+						<img src="lib/images/clean-2.jpg"/>
+						<aside class="notes">
+							- Not just panel blocks, but panel regions as well
+							- How does this integrate with features? I assume the panels setting would be captured fine but unsure about blocks. We also like Boxes and BEAN, so how does that integrate.
+						</aside>
+					</section>
+					<section>
+						<h2>Controlling Drupal Markup</h2>
+						<p><strong>Theme</strong></p>
+						<p>For when you find yourself repeating yourself...</p>
+						<ul>
+							<li>Much of this can be configured on the theme level with TPL</li>
+							<li>Create your own starter theme or a collection of TPL files</li>
+							<li>Capture settings you are implementing on every project</li>
+							<li>Look to other themes for inspiration</li>
+						</ul>
+
+						<aside class="notes">
+							- Themes are a great way to capture the settings you implement on every project. This does require going back to those TPL file we introduced earlier.
+							- I like the module UI for items that have variance in their configuration but I hate configuring the same thing on every project. For example a views class in UI but read more button in tpl.
+							- At The Jibe, we use the Basic theme and we are currently in the process of applying a lot of this at the theme level.
+							- I have been looking at Mothership a lot because it is the Cadillac of simplifying markup.
 						</aside>
 					</section>
 				</section>
 
 				<section>
 					<h2 style="margin-bottom: 0;">Working with</h2><h1>Best Practices</h1>
-					<p></p>
+					<p>Modular CSS helps us...</p>
 					<ul class="fragment">
-						<li>Reinforces clean markup</li>
-						<li>While you are thinking about classes, you think about using the correct HTML5 markup</li>
-						<li>This concept lends itself to online style tiles or style guides. Use each component to style some basic HTML on styles page. Gives other devs a point of reference.</li>
+						<li>Reinforce <strong>clean markup</strong></li>
+						<li>While you are thinking about classes, you think about using the <strong>correct HTML5 markup</strong></li>
+						<li>This concept lends itself to online style tiles or <strong>style guides</strong></li>
 					</ul>
+					<aside class="notes">
+						- While reading about modular css and SMACSS, I was struck with how well this fits with other best practices.
+						- Use each component to style some basic HTML on styles page. Gives other devs a point of reference.
+					</asode>
 				</section>
 
 				<section>
@@ -634,7 +708,7 @@
 					</section>
 				</section>
 			</div>
-
+			<footer style="position:absolute;bottom:0;background:#FFF;z-index:100;width:100%;font-size:0.5em;border-top:solid 1px #4D4D4F"><img style="margin-left:10px;margin-top:5px;" src="lib/images/thejibe.jpg"/><span style="float:right;line-height:50px;color:#4D4D4F;margin-right:10px;">One Div To Rule Them All!&nbsp;&nbsp;//&nbsp;&nbsp;@leahmarsh</span></footer>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
