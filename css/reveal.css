@@ -336,6 +336,8 @@ body {
 }
 .reveal code {
 	font-family: monospace;
+	background: #000;
+	color: #FFF;
 }
 .reveal pre code {
 	padding: 25px 5px;
